@@ -1,0 +1,21 @@
+{
+    "name": "avarel/sw-attribute-installer",
+    "description": "Shopware 5 attribute installer",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "André Varelmann",
+            "email": "dev@andre.varelmann.de"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Avarel\\AttributeInstaller\\": "src"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "shopware/shopware": "^5.6"
+    }
+}

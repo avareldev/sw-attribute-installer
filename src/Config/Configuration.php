@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Avarel\Config;
+namespace Avarel\AttributeInstaller\Config;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -10,8 +10,8 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
 /**
  * Class Configuration
  *
- * @author André Varelmann <andre.varelmann@bestit-online.de>
- * @package Avarel\Config
+ * @author André Varelmann <ev@andre-varelmann.de>
+ * @package Avarel\AttributeInstaller\Config
  */
 class Configuration implements ConfigurationInterface
 {
@@ -27,12 +27,19 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('attributes');
 
         $rootNode
+            ->useAttributeAsKey('name')
             ->arrayPrototype()
-                ->children()
-                    ->scalarNode('driver')->end()
-                    ->scalarNode('host')->end()
-                    ->scalarNode('username')->end()
-                    ->scalarNode('password')->end()
+                ->useAttributeAsKey('name')
+                ->arrayPrototype()
+                    ->children()
+                        ->scalarNode('type')->cannotBeEmpty()->isRequired()->end()
+                        ->booleanNode('displayInBackend')->isRequired()->end()
+                        ->scalarNode('label')->end()
+                        ->scalarNode('entity')->end()
+                        ->scalarNode('newColumn')->end()
+                        ->scalarNode('updateDependingTables')->end()
+                        ->scalarNode('defaultValue')->end()
+                    ->end()
                 ->end()
             ->end();
 

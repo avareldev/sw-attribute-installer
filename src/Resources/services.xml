@@ -7,8 +7,12 @@
             <argument id="shopware_attribute.crud_service" type="service"/>
             <argument id="models" type="service"/>
         </service>
+
+        <service id="Avarel\AttributeInstaller\Config\ConfigurationReader"/>
+
         <service id="Avarel\AttributeInstaller\Command\InstallCommand">
-            <argument type="service" id="App\AttributeInstaller\AttributeInstaller"/>
+            <argument type="service" id="Avarel\AttributeInstaller\Config\ConfigurationReader"/>
+            <argument type="service" id="Avarel\AttributeInstaller\Installer"/>
             <tag name="console.command"/>
         </service>
     </services>

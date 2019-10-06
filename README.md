@@ -1,6 +1,7 @@
 # Attribute installer for shopware 5
 
-This package provides a attribte install command based on a yaml config.
+This package provides a attribute install command based on a yaml config.
+This is intended to work with the composer skeleton of shopware 5
 
 ## Installation
 
@@ -31,9 +32,9 @@ attributes:
             type: 'float'
             label: 'UVP'
             displayInBackend: true
-        expert_rating_image:
+        rating_image:
             type: 'single_selection'
-            label: 'Experten Bild'
+            label: 'Image'
             displayInBackend: true
             entity: 'Shopware\Models\Media\Media'
     s_categories_attributes:
@@ -44,7 +45,7 @@ attributes:
 
 ```
 
-## Excecute the command
+## Execute the command
 
 Use this command to install the attributes
 

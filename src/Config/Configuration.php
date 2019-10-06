@@ -32,6 +32,22 @@ class Configuration implements ConfigurationInterface
                 ->useAttributeAsKey('name')
                 ->arrayPrototype()
                     ->children()
+                        ->enumNode('type')
+                            ->cannotBeEmpty()
+                            ->values([
+                                'string',
+                                'text',
+                                'html',
+                                'integer',
+                                'float',
+                                'boolean',
+                                'date',
+                                'datetime',
+                                'combobox',
+                                'single_selection',
+                                'multi_selection',
+                            ])
+                        ->end()
                         ->scalarNode('type')->cannotBeEmpty()->isRequired()->end()
                         ->booleanNode('displayInBackend')->isRequired()->end()
                         ->scalarNode('label')->end()
